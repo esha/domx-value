@@ -1,4 +1,5 @@
 var S = _.stringify = {
+    version: "<%= pkg.version %>",
     map: Array.prototype.map,
     specialPrefix: '_',
     markup: {

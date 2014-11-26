@@ -1,44 +1,39 @@
 {
-    "name": "domx",
+    "name": "domx-stringify",
     "version": "0.14.1",
-    "main": "dist/domx.js",
-    "description": "An intuitive, extensible way to work directly with the DOM.",
+    "main": "dist/domx-stringify.js",
+    "description": "DOMx extension that makes it easy to convert DOM structures to strings, both plain and marked up for highlighting.",
     "keywords": [
         "HTML",
         "DOM",
-        "traverse",
-        "append",
-        "emmet",
-        "befriend",
-        "manipulate",
-        "extend",
-        "native",
-        "repeat",
-        "values",
-        "dot",
-        "xValue"
+        "string",
+        "markup",
+        "highlight"
     ],
     "author": {
         "name": "ESHA Research",
         "email": "nathan@esha.com",
         "url": "http://www.esha.com/"
     },
-    "homepage": "http://esha.github.io/domx/",
-    "bugs": "https://github.com/esha/domx/issues",
+    "homepage": "http://esha.github.io/domx-stringify/",
+    "bugs": "https://github.com/esha/domx-stringify/issues",
     "repository": {
         "type": "git",
-        "url": "https://github.com:esha/domx.git"
+        "url": "https://github.com:esha/domx-stringify.git"
     },
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://raw.githubusercontent.com/esha/domx/master/LICENSE-MIT"
+            "url": "https://raw.githubusercontent.com/esha/domx-stringify/master/LICENSE-MIT"
         },
         {
             "type": "GPL",
             "url": "http://www.gnu.org/licenses/gpl.html"
         }
     ],
+    "dependencies": {
+        "domx": "0.x.x"
+    },
     "ignore": [
         "**/.*",
         "node_modules",

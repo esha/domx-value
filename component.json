@@ -1,30 +1,23 @@
 {
-  "name": "domx",
-  "repo": "esha/domx",
-  "description": "An intuitive, extensible way to work directly with the DOM.",
+  "name": "domx-stringify",
+  "repo": "esha/domx-stringify",
+  "description": "DOMx extension that makes it easy to convert DOM structures to strings, both plain and marked up for highlighting.",
   "version": "0.14.1",
   "keywords": [
     "HTML",
     "DOM",
-    "traverse",
-    "manipulate",
-    "extend",
-    "better",
-    "befriend",
-    "query",
-    "dot",
-    "emmet",
-    "repeat",
-    "values",
-    "native",
-    "xValue"
+    "string",
+    "markup",
+    "highlight"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "domx": "0.x.x"
+  },
   "development": {},
   "license": "MIT",
   "main": "src/component.js",
   "scripts": [
     "src/component.js",
-    "dist/domx.js"
+    "dist/domx-stringify.js"
   ]
 }

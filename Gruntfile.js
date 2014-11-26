@@ -16,59 +16,12 @@ module.exports = function(grunt) {
       files: ['dist']
     },
     frame: {
-      options: {
-        frame: 'src/frame.js',
-      },
       dist: {
-        src: ['src/core.js',
-              'src/traverse.js',
-              'src/append.js',
-              'src/xvalue.js',
-              'src/repeat.js',
-              'src/emmet.js',
-              'src/dot.js'],
-        dest: 'dist/<%= pkg.name %>.js'
-      },
-      base: {
-        src: ['src/core.js',
-              'src/traverse.js',
-              'src/append.js'],
-        dest: 'dist/<%= pkg.name %>.base.js'
-      },
-      emmet: {
-        options: {
-          frame: 'src/plugin-frame.js',
-        },
-        src: ['src/emmet.js'],
-        dest: 'dist/<%= pkg.name %>.emmet.js'
-      },
-      values: {
-        options: {
-          frame: 'src/plugin-frame.js',
-        },
-        src: ['src/xvalue.js'],
-        dest: 'dist/<%= pkg.name %>.xvalue.js'
-      },
-      repeat: {
-        options: {
-          frame: 'src/plugin-frame.js',
-        },
-        src: ['src/repeat.js'],
-        dest: 'dist/<%= pkg.name %>.repeat.js'
-      },
-      dot: {
-        options: {
-          frame: 'src/plugin-frame.js',
-        },
-        src: ['src/dot.js'],
-        dest: 'dist/<%= pkg.name %>.dot.js'
-      },
-      stringify: {
         options: {
           frame: 'src/plugin-frame.js',
         },
         src: ['src/stringify.js'],
-        dest: 'dist/<%= pkg.name %>.stringify.js'
+        dest: 'dist/<%= pkg.name %>.js'
       },
     },
     uglify: {
@@ -79,10 +32,6 @@ module.exports = function(grunt) {
       dist: {
         src: ['dist/<%= pkg.name %>.js'],
         dest: 'dist/<%= pkg.name %>.min.js'
-      },
-      base: {
-        src: ['dist/<%= pkg.name %>.base.js'],
-        dest: 'dist/<%= pkg.name %>.base.min.js'
       },
     },
     compress: {

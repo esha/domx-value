@@ -1,26 +1,26 @@
 {
-  "name": "domx",
-  "title": "DOMx",
-  "description": "An intuitive, extensible way to work directly with the DOM.",
+  "name": "domx-stringify",
+  "title": "DOMx Stringify",
+  "description": "DOMx extension that makes it easy to convert DOM structures to strings, both plain and marked up for highlighting.",
   "version": "0.14.1",
-  "homepage": "http://esha.github.io/domx/",
+  "homepage": "http://esha.github.io/domx-stringify/",
   "author": {
     "name": "ESHA Research",
     "email": "nathan@esha.com",
     "url": "http://www.esha.com"
   },
-  "main": "dist/domx.min.js",
+  "main": "dist/domx-stringify.min.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/esha/domx.git"
+    "url": "git://github.com/esha/domx-stringify.git"
   },
   "bugs": {
-    "url": "https://github.com/esha/domx/issues"
+    "url": "https://github.com/esha/domx-stringify/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/esha/domx/blob/master/LICENSE-MIT"
+      "url": "https://github.com/esha/domx-stringify/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
@@ -29,7 +29,9 @@
   "scripts": {
     "test": "grunt qunit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "domx": "0.x.x"
+  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-qunit": "~0.2.0",
@@ -42,19 +44,10 @@
     "grunt-contrib-compress": "~0.5.2"
   },
   "keywords": [
-    "html",
+    "HTML",
     "DOM",
-    "befriend",
-    "traverse",
-    "manipulate",
-    "extend",
-    "better",
-    "query",
-    "dot",
-    "emmet",
-    "repeat",
-    "values",
-    "native",
-    "xValue"
+    "string",
+    "markup",
+    "highlight"
   ]
 }

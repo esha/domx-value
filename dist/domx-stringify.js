@@ -1,5 +1,5 @@
-/*! domx - v0.14.1 - 2014-11-25
-* http://esha.github.io/domx/
+/*! domx-stringify - v0.14.1 - 2014-11-26
+* http://esha.github.io/domx-stringify/
 * Copyright (c) 2014 ESHA Research; Licensed MIT, GPL */
 
 (function(D) {
@@ -10,6 +10,7 @@
         _ = X._;
 
 var S = _.stringify = {
+    version: "0.14.1",
     map: Array.prototype.map,
     specialPrefix: '_',
     markup: {
