@@ -23,6 +23,6 @@ Adds [`stringify()`][stringify] to DOM nodes and lists.
 [full]: https://raw.github.com/esha/domx-stringify/master/dist/domx-stringify.js
 
 ### Release History
-* 2014-11-26 [v0.1.0][] (first public release)
+* 2014-11-26 [v1.0.0][] (first public release)
 
-[v0.1.0]: https://github.com/esha/domx/tree/0.1.0
+[v1.0.0]: https://github.com/esha/domx/tree/1.0.0

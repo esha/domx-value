@@ -1,6 +1,6 @@
 {
     "name": "domx-stringify",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "main": "dist/domx-stringify.js",
     "description": "DOMx extension that makes it easy to convert DOM structures to strings, both plain and marked up for highlighting.",
     "keywords": [

@@ -2,7 +2,7 @@
   "name": "domx-stringify",
   "repo": "esha/domx-stringify",
   "description": "DOMx extension that makes it easy to convert DOM structures to strings, both plain and marked up for highlighting.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "keywords": [
     "HTML",
     "DOM",
