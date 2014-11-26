@@ -17,7 +17,7 @@ A [DOMx][domx] extension that makes it easy to convert DOM structures to strings
 
 Download: [domx-stringify.min.js][full-min] or [domx-stringify.js][full]  
 
-Adds [`stringify()`][stringify] to DOM nodes and lists.  
+Adds `stringify([markup][, indent])` to DOM nodes and lists.  
 
 [full-min]: https://raw.github.com/esha/domx-stringify/master/dist/domx-stringify.min.js
 [full]: https://raw.github.com/esha/domx-stringify/master/dist/domx-stringify.js
