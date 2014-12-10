@@ -26,7 +26,7 @@ module.exports = function(grunt) {
         options: {
           frame: 'src/plugin-frame.js',
         },
-        src: ['src/repeat.js'],
+        src: ['src/xvalue.js'],
         dest: 'dist/<%= pkg.name %>.js'
       },
     },

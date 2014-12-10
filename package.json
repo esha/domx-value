@@ -1,26 +1,26 @@
 {
-  "name": "domx-repeat",
-  "title": "DOMx Repeat",
-  "description": "DOMx extension that makes it trivial to repeat DOM structures (yes, templates but w/o special syntax).",
+  "name": "domx-value",
+  "title": "DOMx xValue",
+  "description": "DOMx extension that makes it trivial to read and write rich, typed, nested model values to and from the DOM using name attributes.",
   "version": "0.1.0",
-  "homepage": "http://esha.github.io/domx-repeat/",
+  "homepage": "http://esha.github.io/domx-value/",
   "author": {
     "name": "ESHA Research",
     "email": "nathan@esha.com",
     "url": "http://www.esha.com"
   },
-  "main": "dist/domx-repeat.min.js",
+  "main": "dist/domx-value.min.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/esha/domx-repeat.git"
+    "url": "git://github.com/esha/domx-value.git"
   },
   "bugs": {
-    "url": "https://github.com/esha/domx-repeat/issues"
+    "url": "https://github.com/esha/domx-value/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/esha/domx-repeat/blob/master/LICENSE-MIT"
+      "url": "https://github.com/esha/domx-value/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
@@ -48,8 +48,13 @@
   "keywords": [
     "DOMx",
     "DOM",
-    "template",
-    "repeat",
+    "json",
+    "name",
+    "bind",
+    "model",
+    "query",
+    "value",
+    "object",
     "xvalue"
   ]
 }

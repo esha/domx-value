@@ -1,13 +1,18 @@
 {
-  "name": "domx-repeat",
-  "repo": "esha/domx-repeat",
-  "description": "DOMx extension that makes it trivial to repeat DOM structures (yes, templates but w/o special syntax).",
+  "name": "domx-value",
+  "repo": "esha/domx-value",
+  "description": "DOMx extension that makes it trivial to read and write rich, typed, nested model values to and from the DOM using name attributes.",
   "version": "0.1.0",
   "keywords": [
     "DOMx",
     "DOM",
-    "template",
-    "repeat",
+    "json",
+    "name",
+    "bind",
+    "model",
+    "query",
+    "value",
+    "object",
     "xvalue"
   ],
   "dependencies": {
@@ -18,6 +23,6 @@
   "main": "src/component.js",
   "scripts": [
     "src/component.js",
-    "dist/domx-repeat.js"
+    "dist/domx-value.js"
   ]
 }

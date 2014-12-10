@@ -2,13 +2,13 @@
 <html x-dot>
 <head>
   <meta charset="utf-8">
-  <title>DOMx Repeat Test Suite</title>
+  <title>DOMx xValue Test Suite</title>
   <link rel="stylesheet" href="../libs/qunit/qunit.css" media="screen">
   <script src="../libs/qunit/qunit.js"></script>
   <script src="../bower_components/domx/dist/domx.base.js"></script>
-  <script src="../bower_components/domx/dist/domx.xvalue.js"></script>
-  <script src="../dist/domx-repeat.js"></script>
-  <script src="repeat.js"></script>
+  <script src="../bower_components/domx/dist/domx.emmet.js"></script>
+  <script src="../dist/domx-value.js"></script>
+  <script src="xvalue.js"></script>
   <script type="text/javascript">
     // make REPL work in the console easy
     window.D = document;
@@ -21,11 +21,22 @@
   <div id="qunit-fixture">
     <!-- a comment -->
     <section class="foo">
+      <div id="first"><span id="inner"> </span></div>
+      <div id="identity"></div>
+      <div></div>
+      <div></div>
+      <div id="last"></div>
     </section>
-  </div>
-  <div class="other" x-repeat=".foo" x-repeat-none>There are <b>no</b> foos.</div>
-  <div class="self" x-repeat x-repeat-none="No items." x-repeat-first>
-    <span class="item"></span>
+    <aside>
+      <div class="a"><span>1</span></div>
+      <div class="a"><span>2</span></div>
+    </aside>
+    <div name="named">
+      <b>
+        <span name="nested">named.nested</span>
+      </b>
+    </div>
+    <div name="named">{"nested":"named.nested"}</div>
   </div>
 </body>
 </html>
