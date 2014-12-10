@@ -1,30 +1,30 @@
 {
-    "name": "domx-stringify",
-    "version": "1.0.0",
-    "main": "dist/domx-stringify.js",
-    "description": "DOMx extension that makes it easy to convert DOM structures to strings, both plain and marked up for highlighting.",
+    "name": "domx-repeat",
+    "version": "0.1.0",
+    "main": "dist/domx-repeat.js",
+    "description": "DOMx extension that makes it trivial to repeat DOM structures (yes, templates but w/o special syntax).",
     "keywords": [
-        "HTML",
+        "DOMx",
         "DOM",
-        "string",
-        "markup",
-        "highlight"
+        "template",
+        "repeat",
+        "xvalue"
     ],
     "author": {
         "name": "ESHA Research",
         "email": "nathan@esha.com",
         "url": "http://www.esha.com/"
     },
-    "homepage": "http://esha.github.io/domx-stringify/",
-    "bugs": "https://github.com/esha/domx-stringify/issues",
+    "homepage": "http://esha.github.io/domx-repeat/",
+    "bugs": "https://github.com/esha/domx-repeat/issues",
     "repository": {
         "type": "git",
-        "url": "https://github.com:esha/domx-stringify.git"
+        "url": "https://github.com:esha/domx-repeat.git"
     },
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://raw.githubusercontent.com/esha/domx-stringify/master/LICENSE-MIT"
+            "url": "https://raw.githubusercontent.com/esha/domx-repeat/master/LICENSE-MIT"
         },
         {
             "type": "GPL",

@@ -1,26 +1,26 @@
 {
-  "name": "domx-stringify",
-  "title": "DOMx Stringify",
-  "description": "DOMx extension that makes it easy to convert DOM structures to strings, both plain and marked up for highlighting.",
-  "version": "1.0.0",
-  "homepage": "http://esha.github.io/domx-stringify/",
+  "name": "domx-repeat",
+  "title": "DOMx Repeat",
+  "description": "DOMx extension that makes it trivial to repeat DOM structures (yes, templates but w/o special syntax).",
+  "version": "0.1.0",
+  "homepage": "http://esha.github.io/domx-repeat/",
   "author": {
     "name": "ESHA Research",
     "email": "nathan@esha.com",
     "url": "http://www.esha.com"
   },
-  "main": "dist/domx-stringify.min.js",
+  "main": "dist/domx-repeat.min.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/esha/domx-stringify.git"
+    "url": "git://github.com/esha/domx-repeat.git"
   },
   "bugs": {
-    "url": "https://github.com/esha/domx-stringify/issues"
+    "url": "https://github.com/esha/domx-repeat/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/esha/domx-stringify/blob/master/LICENSE-MIT"
+      "url": "https://github.com/esha/domx-repeat/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
@@ -33,21 +33,23 @@
     "domx": "0.x.x"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-qunit": "~0.2.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.0",
-    "grunt-contrib-watch": "~0.4.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-cli": "^0.1",
-    "grunt": "~0.4.1",
-    "grunt-contrib-compress": "~0.5.2"
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-qunit": "~0.5.2",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-cli": "^0.1.13",
+    "grunt": "~0.4.5",
+    "grunt-contrib-compress": "~0.12.0",
+    "load-grunt-tasks": "~1.0.0",
+    "time-grunt": "~1.0.0"
   },
   "keywords": [
-    "HTML",
+    "DOMx",
     "DOM",
-    "string",
-    "markup",
-    "highlight"
+    "template",
+    "repeat",
+    "xvalue"
   ]
 }

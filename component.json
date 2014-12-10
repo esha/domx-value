@@ -1,14 +1,14 @@
 {
-  "name": "domx-stringify",
-  "repo": "esha/domx-stringify",
-  "description": "DOMx extension that makes it easy to convert DOM structures to strings, both plain and marked up for highlighting.",
-  "version": "1.0.0",
+  "name": "domx-repeat",
+  "repo": "esha/domx-repeat",
+  "description": "DOMx extension that makes it trivial to repeat DOM structures (yes, templates but w/o special syntax).",
+  "version": "0.1.0",
   "keywords": [
-    "HTML",
+    "DOMx",
     "DOM",
-    "string",
-    "markup",
-    "highlight"
+    "template",
+    "repeat",
+    "xvalue"
   ],
   "dependencies": {
     "domx": "0.x.x"
@@ -18,6 +18,6 @@
   "main": "src/component.js",
   "scripts": [
     "src/component.js",
-    "dist/domx-stringify.js"
+    "dist/domx-repeat.js"
   ]
 }

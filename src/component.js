@@ -1,2 +1,2 @@
 
-module.exports = require('../dist/domx-stringify.js');
+module.exports = require('../dist/domx-repeat.js');

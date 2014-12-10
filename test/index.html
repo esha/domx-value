@@ -2,12 +2,13 @@
 <html x-dot>
 <head>
   <meta charset="utf-8">
-  <title>DOMx Stringify Test Suite</title>
+  <title>DOMx Repeat Test Suite</title>
   <link rel="stylesheet" href="../libs/qunit/qunit.css" media="screen">
   <script src="../libs/qunit/qunit.js"></script>
-  <script src="../bower_components/domx/dist/domx.js"></script>
-  <script src="../dist/domx-stringify.js"></script>
-  <script src="stringify.js"></script>
+  <script src="../bower_components/domx/dist/domx.base.js"></script>
+  <script src="../bower_components/domx/dist/domx.xvalue.js"></script>
+  <script src="../dist/domx-repeat.js"></script>
+  <script src="repeat.js"></script>
   <script type="text/javascript">
     // make REPL work in the console easy
     window.D = document;
@@ -20,10 +21,11 @@
   <div id="qunit-fixture">
     <!-- a comment -->
     <section class="foo">
-      <div id="first"><span id="inner"> </span></div>
-      <div id="identity"></div>
-      <div></div>
-      <div id="last"></div>
     </section>
+  </div>
+  <div class="other" x-repeat=".foo" x-repeat-none>There are <b>no</b> foos.</div>
+  <div class="self" x-repeat x-repeat-none="No items." x-repeat-first>
+    <span class="item"></span>
+  </div>
 </body>
 </html>
