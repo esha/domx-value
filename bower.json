@@ -1,51 +1,54 @@
 {
-    "name": "domx-value",
-    "version": "0.1.0",
-    "main": "dist/domx-value.js",
-    "description": "DOMx extension that makes it trivial to read and write rich, typed, nested model values to and from the DOM using name attributes.",
-    "keywords": [
-        "DOMx",
-        "DOM",
-        "json",
-        "name",
-        "bind",
-        "model",
-        "query",
-        "value",
-        "object",
-        "xvalue"
-    ],
-    "author": {
-        "name": "ESHA Research",
-        "email": "nathan@esha.com",
-        "url": "http://www.esha.com/"
+  "name": "domx-value",
+  "version": "0.1.0",
+  "main": "dist/domx-value.js",
+  "description": "DOMx extension that makes it trivial to read and write rich, typed, nested model values to and from the DOM using name attributes.",
+  "keywords": [
+    "DOMx",
+    "DOM",
+    "json",
+    "name",
+    "bind",
+    "model",
+    "query",
+    "value",
+    "object",
+    "xvalue"
+  ],
+  "author": {
+    "name": "ESHA Research",
+    "email": "nathan@esha.com",
+    "url": "http://www.esha.com/"
+  },
+  "homepage": "http://esha.github.io/domx-value/",
+  "bugs": "https://github.com/esha/domx-value/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:esha/domx-value.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.githubusercontent.com/esha/domx-value/master/LICENSE-MIT"
     },
-    "homepage": "http://esha.github.io/domx-value/",
-    "bugs": "https://github.com/esha/domx-value/issues",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com:esha/domx-value.git"
-    },
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "https://raw.githubusercontent.com/esha/domx-value/master/LICENSE-MIT"
-        },
-        {
-            "type": "GPL",
-            "url": "http://www.gnu.org/licenses/gpl.html"
-        }
-    ],
-    "dependencies": {
-        "domx": "0.x.x"
-    },
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "components",
-        "libs",
-        "test",
-        "src",
-        "Gruntfile.js"
-    ]
+    {
+      "type": "GPL",
+      "url": "http://www.gnu.org/licenses/gpl.html"
+    }
+  ],
+  "dependencies": {
+    "domx": "0.x.x"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "libs",
+    "test",
+    "src",
+    "Gruntfile.js"
+  ],
+  "devDependencies": {
+    "qunit": "~1.16.0"
+  }
 }

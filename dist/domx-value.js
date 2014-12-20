@@ -1,4 +1,4 @@
-/*! domx-value - v0.1.0 - 2014-12-10
+/*! domx-value - v0.1.0 - 2014-12-20
 * http://esha.github.io/domx-value/
 * Copyright (c) 2014 ESHA Research; Licensed MIT, GPL */
 
