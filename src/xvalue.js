@@ -30,7 +30,7 @@ var V = _.xValue = {
         return value;
     },
     stringifyFor: function(el) {
-        var stringify = el.getAttribute('xvalue-stringify');
+        var stringify = el.getAttribute('x-value-stringify');
         return stringify && V.resolve(window, stringify) || V.string;        
     },
     nameNodes: function(parent, nameFn, possibleParentFn, attrFn) {
@@ -220,7 +220,7 @@ _.define([Element], {
     baseProperty: 'value',
     baseValue: {
         get: function() {
-            var parser = this.getAttribute('xvalue-parse');
+            var parser = this.getAttribute('x-value-parse');
             parser = parser && V.resolve(window, parser) || V.parse;
             return parser.call(this, this[this.baseProperty]);
         },
@@ -232,8 +232,8 @@ _.define([Element], {
             }
         }
     },
-    useAttrValues: V.booleanAttr('xvalue-attr'),
-    noSubNames: V.booleanAttr('xvalue-none')
+    useAttrValues: V.booleanAttr('x-value-attr'),
+    noSubNames: V.booleanAttr('x-value-none')
 }, true);
 
 _.define(X.containers, {
