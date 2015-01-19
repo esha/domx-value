@@ -180,4 +180,18 @@
         el.remove();
     });
 
+    test('queryNameAll only returns x-repeat element if no others', function() {
+        var ol = D.getElementById('repeats');
+        ok(ol);
+        equal(ol.children.length, 1, "list should have one child");
+        equal(D.queryNameAll('items').length, 1, "queryNameAll should return one child");
+        var xrepeat = D.queryName('items');
+        equal(xrepeat.tagName, 'X-REPEAT', "queryName should get the x-repeat");
+        xrepeat.repeat('one');
+        equal(ol.children.length, 2, "list should have two children");
+        equal(D.queryNameAll('items').length, 1, "queryNameAll should still return one child");
+        var li = D.queryName('items');
+        equal(li.tagName, 'LI', 'queryName should return li');
+    });
+
 }(document));

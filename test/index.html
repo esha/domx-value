@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css" media="screen">
   <script src="../bower_components/qunit/qunit/qunit.js"></script>
   <script src="../bower_components/domx/dist/domx.js"></script>
+  <script src="../bower_components/domx-repeat/dist/domx-repeat.js"></script>
   <script src="../dist/domx-value.js"></script>
   <script src="xvalue.js"></script>
   <script type="text/javascript">
@@ -36,6 +37,9 @@
       </b>
     </div>
     <div name="named">{"nested":"named.nested"}</div>
+    <ol id="repeats">
+      <li x-repeat name="items"></li>
+    </ol>
   </div>
 </body>
 </html>

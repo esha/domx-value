@@ -248,7 +248,8 @@ _.define(X.containers, {
             for (var i=0; i < parent.childNodes.length && !_list.isFull(); i++) {
                 var node = parent.childNodes[i],
                     nodeName = V.name(node);
-                if (nodeName === name && node.tagName !== 'X-REPEAT') {
+                if (nodeName === name &&
+                    (node.tagName !== 'X-REPEAT' || parent.children.length === 1)) {
                     _list.add(node);
                 } else if (node.nodeType === 1) {
                     if (nodeName) {
