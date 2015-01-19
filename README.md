@@ -36,5 +36,6 @@ Adds the `xValue` getter/setter to DOM nodes and the `queryName(name)` and `quer
 ### Release History
 * 2014-12-10 [v0.1.0][] (first independent release)
 * 2014-12-23 [v0.2.0][] (s/xvalue-/x-value- for plugin attribute hooks)
+* 2015-01-19 [v0.2.1][] (bugfix - queryName should only ignore x-repeat when there are other children)
 
 [v0.1.0]: https://github.com/esha/domx/tree/0.1.0

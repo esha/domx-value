@@ -1,6 +1,6 @@
 {
   "name": "domx-value",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/domx-value.js",
   "description": "DOMx extension that makes it trivial to read and write rich, typed, nested model values to and from the DOM using name attributes.",
   "keywords": [

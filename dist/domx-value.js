@@ -1,6 +1,6 @@
-/*! domx-value - v0.2.0 - 2014-12-23
+/*! domx-value - v0.2.1 - 2015-01-19
 * http://esha.github.io/domx-value/
-* Copyright (c) 2014 ESHA Research; Licensed MIT, GPL */
+* Copyright (c) 2015 ESHA Research; Licensed MIT, GPL */
 
 (function(D) {
     "use strict";
@@ -259,7 +259,8 @@ _.define(X.containers, {
             for (var i=0; i < parent.childNodes.length && !_list.isFull(); i++) {
                 var node = parent.childNodes[i],
                     nodeName = V.name(node);
-                if (nodeName === name && node.tagName !== 'X-REPEAT') {
+                if (nodeName === name &&
+                    (node.tagName !== 'X-REPEAT' || parent.children.length === 1)) {
                     _list.add(node);
                 } else if (node.nodeType === 1) {
                     if (nodeName) {
