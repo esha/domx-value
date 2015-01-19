@@ -190,6 +190,8 @@ _.define([Node], {
                     var last = group[group.length - 1];
                     group.add(last.repeat(values[group.length]));
                 }
+            } else if (this.tagName === 'X-REPEAT') {
+                this.repeat(values);
             } else {
                 this.xValue = values;
             }
