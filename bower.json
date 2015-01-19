@@ -49,6 +49,7 @@
     "Gruntfile.js"
   ],
   "devDependencies": {
-    "qunit": "~1.16.0"
+    "qunit": "~1.16.0",
+    "domx-repeat": "~0.1.0"
   }
 }
