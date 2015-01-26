@@ -100,6 +100,13 @@
         equal('a 2 c {"e":false}', el.textContent);
         deepEqual(val, el.xValue);
         ok(val !== el.xValue, 'should be different object');
+
+        var a = D.createElement('a');
+        a.setAttribute('name', 'nest');
+        a.value = '${test}';
+        ok(!a.useBaseValue(), "a should not use base value");
+        a.xValue = { test: 'deep single'};
+        equal(a.textContent, 'deep single');
     });
 
     test('change event', function() {
@@ -192,6 +199,27 @@
         equal(D.queryNameAll('items').length, 1, "queryNameAll should still return one child");
         var li = D.queryName('items');
         equal(li.tagName, 'LI', 'queryName should return li');
+    });
+
+    test('x-value-attr', function() {
+        var a = D.createElement('a'),
+            div = D.createElement('div');
+        a.setAttribute('x-value-attr', 'test,foo');
+        a.setAttribute('test','');
+        a.setAttribute('name', 'object');
+        a.textContent = '${text}';
+
+        div.appendChild(a);
+        ok(a.useAttrValues, 'should support attribute values');
+        ok(a.hasAttribute('test'));
+        strictEqual(a.parentNode, div);
+        strictEqual(div.queryName('object'), a);
+
+        div.xValue = { object: { text: 'text', test: 'changed', foo: 'bar' }};
+        equal(a.textContent, 'text', 'should have text content');
+        equal(a.getAttribute('test'), 'changed', 'should have test attribute changed');
+        ok(!a.hasAttribute('foo'), 'should not create attributes');
+        deepEqual(div.xValue, {object:{text:'text',test:'changed'}});
     });
 
 }(document));

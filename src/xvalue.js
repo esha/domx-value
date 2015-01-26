@@ -46,8 +46,12 @@ var V = _.xValue = {
                 possibleParentFn(node);
             }
             if (node.useAttrValues) {
+                var allowed = node.getAttribute('x-value-attr').split(',');
                 for (var a=0; a < node.attributes.length; a++) {
-                    attrFn(node.attributes[a], nodeValue);
+                    var attr = node.attributes[a];
+                    if (allowed.indexOf(attr.name) >= 0) {
+                        attrFn(attr, node, nodeValue);
+                    }
                 }
             }
         }
@@ -70,7 +74,7 @@ var V = _.xValue = {
             return value[name] = V.combine(value[name], node.nameValue);
         }, function(possibleParent) {
             V.getNameValue(possibleParent, value);
-        }, function(attr, nodeValue) {
+        }, function(attr, node, nodeValue) {
             var val = nodeValue || value;
             val[attr.name] = attr.baseValue;
         });
@@ -137,8 +141,15 @@ _.define([Node], {
         }
     },
     useBaseValue: function() {
-        var kids = !this.noSubNames && this.childNodes.length;
-        return !kids || (kids === 1 && !!this.childNodes[0].useBaseValue());
+        var kids = this.childNodes;
+        if (this.noSubNames || !kids.length) {
+            return true;// always use base when no descendents
+        }
+        if (kids.length > 1 || kids[0].name) {
+            return false;// never use base with multiple kids or a named kid
+        }
+        // if Text, check if it just hasn't be split yet.
+        return !kids[0].splitOnName || !kids[0].splitOnName();
     },
     nameParent: {
         get: function() {
@@ -281,7 +292,7 @@ _.define(X.containers, {
 
 _.define([Text], {
     useBaseValue: function() {
-        return this.noSubNames || !this.splitOnName();
+        return true;
     },
     splitOnName: function() {
         var text = this,
