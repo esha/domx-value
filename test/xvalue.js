@@ -29,7 +29,8 @@
     }
 
     var X = D.x,
-        _ = X._;
+        _ = X._,
+        V = _.xValue;
     module("xValue");
 
     test("_.", function() {
@@ -49,6 +50,15 @@
 
     testMethod(X.parents, 'queryName');
     testMethod(X.parents, 'queryNameAll');
+
+    test("_.resolve", function() {
+        window.foo = { bar: true };
+        window['foo.baz'] = true;
+        strictEqual(V.resolve(window, 'foo.bar'), true);
+        strictEqual(V.resolve(window, 'foo.baz'), true);
+        delete window.foo;
+        delete window['foo.baz'];
+    });
 
     function testBaseValue(node, initial) {
         if (arguments.length !== 2) {

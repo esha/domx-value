@@ -1,7 +1,12 @@
 var V = _.xValue = {
     /*jshint evil:true */
     resolve: function(context, reference) {
-        return eval('context["'+reference+'"]');
+        var full = 'context["'+reference+'"]';
+        try {
+            return eval(full+'||context.'+reference);
+        } catch (e) {
+            return eval(full);
+        }
     },
     name: function(node) {
         if (node.nodeType === 3 && !node.noSubNames) {
