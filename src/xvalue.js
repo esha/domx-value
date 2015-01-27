@@ -262,13 +262,20 @@ _.define(X.containers, {
         _list = _list || new X.List(count);
         var parents = _.isList(this) ? this : [this];
         for (var s=0; s < parents.length && !_list.isFull(); s++) {
-            var parent = parents[s];
+            var parent = parents[s],
+                xrepeat = null;
             for (var i=0; i < parent.childNodes.length && !_list.isFull(); i++) {
                 var node = parent.childNodes[i],
                     nodeName = V.name(node);
-                if (nodeName === name &&
-                    (node.tagName !== 'X-REPEAT' || parent.children.length === 1)) {
-                    _list.add(node);
+                if (nodeName === name) {
+                    if (node.tagName === 'X-REPEAT') {
+                        if (xrepeat !== false) {
+                            xrepeat = node;
+                        }
+                    } else {
+                        xrepeat = false;
+                        _list.add(node);
+                    }
                 } else if (node.nodeType === 1) {
                     if (nodeName) {
                         if (name.indexOf(nodeName+'.') === 0) {
@@ -278,6 +285,9 @@ _.define(X.containers, {
                         node.queryNameAll(name, count, _list);
                     }
                 }
+            }
+            if (xrepeat) {
+                _list.add(xrepeat);
             }
             if (parent.useAttrValues && !_list.isFull()) {
                 var el = this;
