@@ -2,7 +2,7 @@
   "name": "domx-value",
   "repo": "esha/domx-value",
   "description": "DOMx extension that makes it trivial to read and write rich, typed, nested model values to and from the DOM using name attributes.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "keywords": [
     "DOMx",
     "DOM",

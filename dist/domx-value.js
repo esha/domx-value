@@ -1,4 +1,4 @@
-/*! domx-value - v0.2.4 - 2015-01-27
+/*! domx-value - v0.2.5 - 2015-01-27
 * http://esha.github.io/domx-value/
 * Copyright (c) 2015 ESHA Research; Licensed MIT, GPL */
 
@@ -273,13 +273,20 @@ _.define(X.containers, {
         _list = _list || new X.List(count);
         var parents = _.isList(this) ? this : [this];
         for (var s=0; s < parents.length && !_list.isFull(); s++) {
-            var parent = parents[s];
+            var parent = parents[s],
+                xrepeat = null;
             for (var i=0; i < parent.childNodes.length && !_list.isFull(); i++) {
                 var node = parent.childNodes[i],
                     nodeName = V.name(node);
-                if (nodeName === name &&
-                    (node.tagName !== 'X-REPEAT' || parent.children.length === 1)) {
-                    _list.add(node);
+                if (nodeName === name) {
+                    if (node.tagName === 'X-REPEAT') {
+                        if (xrepeat !== false) {
+                            xrepeat = node;
+                        }
+                    } else {
+                        xrepeat = false;
+                        _list.add(node);
+                    }
                 } else if (node.nodeType === 1) {
                     if (nodeName) {
                         if (name.indexOf(nodeName+'.') === 0) {
@@ -290,14 +297,20 @@ _.define(X.containers, {
                     }
                 }
             }
+            if (xrepeat) {
+                _list.add(xrepeat);
+            }
             if (parent.useAttrValues && !_list.isFull()) {
-                var el = this;
-                for (var a=0; a < el.attributes.length; a++) {
-                    var attr = el.attributes[a];
-                    if (attr.name === name) {
-                        attr.parentNode = el;
-                        _list.add(attr);
-                        break;
+                var el = this,
+                    allowed = parent.getAttribute('x-value-attr').split(',');
+                if (allowed.indexOf(name) >= 0) {
+                    for (var a=0; a < el.attributes.length; a++) {
+                        var attr = el.attributes[a];
+                        if (attr.name === name) {
+                            attr.parentNode = el;
+                            _list.add(attr);
+                            break;
+                        }
                     }
                 }
             }
