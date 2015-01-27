@@ -1,4 +1,4 @@
-/*! domx-value - v0.2.3 - 2015-01-26
+/*! domx-value - v0.2.4 - 2015-01-27
 * http://esha.github.io/domx-value/
 * Copyright (c) 2015 ESHA Research; Licensed MIT, GPL */
 
@@ -12,7 +12,12 @@
 var V = _.xValue = {
     /*jshint evil:true */
     resolve: function(context, reference) {
-        return eval('context["'+reference+'"]');
+        var full = 'context["'+reference+'"]';
+        try {
+            return eval(full+'||context.'+reference);
+        } catch (e) {
+            return eval(full);
+        }
     },
     name: function(node) {
         if (node.nodeType === 3 && !node.noSubNames) {
