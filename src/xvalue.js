@@ -290,13 +290,16 @@ _.define(X.containers, {
                 _list.add(xrepeat);
             }
             if (parent.useAttrValues && !_list.isFull()) {
-                var el = this;
-                for (var a=0; a < el.attributes.length; a++) {
-                    var attr = el.attributes[a];
-                    if (attr.name === name) {
-                        attr.parentNode = el;
-                        _list.add(attr);
-                        break;
+                var el = this,
+                    allowed = parent.getAttribute('x-value-attr').split(',');
+                if (allowed.indexOf(name) >= 0) {
+                    for (var a=0; a < el.attributes.length; a++) {
+                        var attr = el.attributes[a];
+                        if (attr.name === name) {
+                            attr.parentNode = el;
+                            _list.add(attr);
+                            break;
+                        }
                     }
                 }
             }

@@ -230,6 +230,11 @@
         equal(a.getAttribute('test'), 'changed', 'should have test attribute changed');
         ok(!a.hasAttribute('foo'), 'should not create attributes');
         deepEqual(div.xValue, {object:{text:'text',test:'changed'}});
+
+        ok(a.queryName('test'), 'should be able to query [test] attribute');
+        a.setAttribute('query', 'true');
+        ok(!a.queryName('query'), 'should not be able to query [query] attr');
+
     });
 
 }(document));
