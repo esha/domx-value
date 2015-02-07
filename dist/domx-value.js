@@ -1,4 +1,4 @@
-/*! domx-value - v0.2.5 - 2015-01-27
+/*! domx-value - v0.2.6 - 2015-02-06
 * http://esha.github.io/domx-value/
 * Copyright (c) 2015 ESHA Research; Licensed MIT, GPL */
 
@@ -50,25 +50,27 @@ var V = _.xValue = {
         return stringify && V.resolve(window, stringify) || V.string;        
     },
     nameNodes: function(parent, nameFn, possibleParentFn, attrFn) {
-        var done = [];
         for (var i=0; i<parent.childNodes.length; i++) {
             var node = parent.childNodes[i],
-                name = V.name(node),
-                nodeValue = null;
-            if (name && done.indexOf(node) < 0) {
-                done.push(node);
-                nodeValue = nameFn(name, node);
+                name = V.name(node);
+            if (name) {
+                nameFn(name, node);
             } else if (possibleParentFn && !node.useBaseValue()) {
                 possibleParentFn(node);
+            } else if (node.useAttrValues) {
+                V.nameAttrs(node, attrFn);
             }
-            if (node.useAttrValues) {
-                var allowed = node.getAttribute('x-value-attr').split(',');
-                for (var a=0; a < node.attributes.length; a++) {
-                    var attr = node.attributes[a];
-                    if (allowed.indexOf(attr.name) >= 0) {
-                        attrFn(attr, node, nodeValue);
-                    }
-                }
+        }
+        if (parent.useAttrValues) {
+            V.nameAttrs(parent, attrFn);
+        }
+    },
+    nameAttrs: function(node, attrFn) {
+        var allowed = node.getAttribute('x-value-attr').split(',');
+        for (var a=0; a < node.attributes.length; a++) {
+            var attr = node.attributes[a];
+            if (allowed.indexOf(attr.name) >= 0) {
+                attrFn(attr);
             }
         }
     },
@@ -90,9 +92,8 @@ var V = _.xValue = {
             return value[name] = V.combine(value[name], node.nameValue);
         }, function(possibleParent) {
             V.getNameValue(possibleParent, value);
-        }, function(attr, node, nodeValue) {
-            var val = nodeValue || value;
-            val[attr.name] = attr.baseValue;
+        }, function(attr) {
+            value[attr.name] = attr.baseValue;
         });
         return value;
     },
@@ -104,8 +105,8 @@ var V = _.xValue = {
             }
         }, function(possibleParent) {
             V.setNameValue(possibleParent, values);
-        }, function(attr, node, elValues) {
-            var value = V.resolve(elValues || values, attr.name);
+        }, function(attr) {
+            var value = V.resolve(values, attr.name);
             if (value !== undefined) {
                 attr.baseValue = value;
             }
