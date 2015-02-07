@@ -237,4 +237,30 @@
 
     });
 
+    test('x-value-attr single node', function() {
+        var el = D.createElement('div'),
+            child = D.createElement('span');
+        child.setAttribute('name', 'test');
+        el.appendChild(child);
+        el.setAttribute('x-value-attr','status');
+        el.setAttribute('status', '');
+        el.xValue = { status: 'READ', test: true };
+        equal(el.getAttribute('status'), 'READ', 'should have status attribute set');
+        equal(child.textContent, 'true', 'child should get content too');
+        deepEqual(el.xValue, {status:'READ',test:true});
+    });
+
+    test('x-value-attr nested under named parent', function() {
+        var el = D.createElement('div'),
+            child = D.createElement('span');
+        child.setAttribute('x-value-attr', 'test');
+        child.setAttribute('test', 'false');
+        el.appendChild(child);
+        el.appendChild(D.createElement('span'));// force non-baseValue
+        deepEqual(el.xValue, {test:false});
+        el.xValue = { test: true };
+        equal(child.getAttribute('test'), 'true', 'should have test attribute set');
+        deepEqual(el.xValue, {test:true});
+    });
+
 }(document));
