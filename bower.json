@@ -37,7 +37,8 @@
     }
   ],
   "dependencies": {
-    "domx": "0.x.x"
+    "domx": "0.x.x",
+    "domx-repeat": "^0.2.0"
   },
   "ignore": [
     "**/.*",
