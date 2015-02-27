@@ -38,11 +38,11 @@ Adds the `xValue` getter/setter to DOM nodes and the `queryName(name)` and `quer
 * 2014-12-23 [v0.2.0][] (s/xvalue-/x-value- for plugin attribute hooks)
 * 2015-01-27 [v0.2.5][] (fix x-value-attr get/set/query, textContent that is all one var, better path resolution, more robust handling of x-repeat)
 * 2015-02-06 [v0.2.6][] (faster and cleaner get/set of nameValue, especially w/x-value-attr)
-* 2015-02-27 [v0.2.9][] (fix get/set of array values, support x-value-parent to repeat of array get/set on duplicate named elements that are children of the same unnamed element instead of sharing the array between them)
+* 2015-02-27 [v0.2.10][] (fix get/set of array values, support x-value-parent to repeat of array get/set on duplicate named elements that are children of the same unnamed element instead of sharing the array between them, fix useBaseValue for elements with child elements)
 
 [v0.1.0]: https://github.com/esha/domx/tree/0.1.0
 [v0.2.0]: https://github.com/esha/domx/tree/0.2.0
 [v0.2.2]: https://github.com/esha/domx/tree/0.2.2
 [v0.2.5]: https://github.com/esha/domx/tree/0.2.5
 [v0.2.6]: https://github.com/esha/domx/tree/0.2.6
-[v0.2.9]: https://github.com/esha/domx/tree/0.2.9
+[v0.2.10]: https://github.com/esha/domx/tree/0.2.10
