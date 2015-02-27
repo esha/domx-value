@@ -263,4 +263,26 @@
         deepEqual(el.xValue, {test:true});
     });
 
+    test('x-value-parent', function() {
+        var root = D.createElement('section'),
+            parent = D.createElement('div'),
+            named = D.createElement('span');
+        root.appendChild(parent);
+        parent.appendChild(named);
+        parent.setAttribute('x-value-parent','');
+        strictEqual(named.nameParent, parent);
+
+        named.setAttribute('name', 'values');
+        named.setAttribute('x-repeat','');
+        var uncle = parent.cloneNode(true),
+            cousin = uncle.children[0];
+        root.appendChild(uncle);
+        deepEqual(named.nameGroup, new X.List(named));
+        deepEqual(cousin.nameGroup, new X.List(cousin));
+
+        var value = root.xValue = { values: [1,2] };
+        deepEqual(parent.xValue, value);
+        deepEqual(uncle.xValue, value);
+    });
+
 }(document));
