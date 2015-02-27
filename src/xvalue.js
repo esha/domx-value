@@ -40,17 +40,15 @@ var V = _.xValue = {
     },
     nameNodes: function(parent, nameFn, possibleParentFn, attrFn) {
         for (var i=0, done = []; i<parent.childNodes.length; i++) {
-            var node = parent.childNodes[i];
-            if (node.tagName !== 'X-REPEAT') {
-                var name = V.name(node);
-                if (name && done.indexOf(name) < 0) {
-                    done.push(name);
-                    nameFn(name, node);
-                } else if (possibleParentFn && !node.useBaseValue()) {
-                    possibleParentFn(node);
-                } else if (node.useAttrValues) {
-                    V.nameAttrs(node, attrFn);
-                }
+            var node = parent.childNodes[i],
+                name = V.name(node);
+            if (name && done.indexOf(name) < 0) {
+                done.push(name);
+                nameFn(name, node);
+            } else if (possibleParentFn && !node.useBaseValue()) {
+                possibleParentFn(node);
+            } else if (node.useAttrValues) {
+                V.nameAttrs(node, attrFn);
             }
         }
         if (parent.useAttrValues) {
