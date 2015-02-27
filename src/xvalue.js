@@ -152,8 +152,8 @@ _.define([Node], {
         if (this.noSubNames || !kids.length) {
             return true;// always use base when no descendents
         }
-        if (kids.length > 1 || kids[0].name) {
-            return false;// never use base with multiple kids or a named kid
+        if (kids.length > 1 || kids[0].name || this.children.length) {
+            return false;// never use base with multiple kids, named kid, or element children
         }
         // if Text, check if it just hasn't be split yet.
         return !kids[0].splitOnName || !kids[0].splitOnName();
