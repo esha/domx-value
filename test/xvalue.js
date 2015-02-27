@@ -285,4 +285,27 @@
         deepEqual(uncle.xValue, value);
     });
 
+    test('element.useBaseValue()', function() {
+        var el = D.createElement('div');
+        equal(el.useBaseValue(), true, "empty element");
+        el.textContent = ' ${foo} ';
+        equal(el.useBaseValue(), false, "element containing ${text} name");
+        el.textContent = 'plain';
+        equal(el.useBaseValue(), true, "element w/plain text");
+        el.appendChild(D.createElement('span'));
+        equal(el.useBaseValue(), false, "element w/child element");
+        el.textContent = '';
+        equal(el.useBaseValue(), true, "empty again");
+        el.appendChild(D.createTextNode('text'));
+        equal(el.useBaseValue(), true, "single plain text node");
+        el.appendChild(D.createComment('comment'));
+        equal(el.useBaseValue(), false, "multiple child nodes");
+        el.textContent = '';
+        equal(el.useBaseValue(), true, "empty again");
+        var node = D.createTextNode('name me');
+        node.name = 'name';
+        el.appendChild(node);
+        equal(el.useBaseValue(), false, "single named child");
+    });
+
 }(document));
