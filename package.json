@@ -2,7 +2,7 @@
   "name": "domx-value",
   "title": "DOMx xValue",
   "description": "DOMx extension that makes it trivial to read and write rich, typed, nested model values to and from the DOM using name attributes.",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "homepage": "http://esha.github.io/domx-value/",
   "author": {
     "name": "ESHA Research",

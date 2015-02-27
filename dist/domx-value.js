@@ -1,4 +1,4 @@
-/*! domx-value - v0.2.6 - 2015-02-06
+/*! domx-value - v0.2.7 - 2015-02-27
 * http://esha.github.io/domx-value/
 * Copyright (c) 2015 ESHA Research; Licensed MIT, GPL */
 
@@ -50,15 +50,18 @@ var V = _.xValue = {
         return stringify && V.resolve(window, stringify) || V.string;        
     },
     nameNodes: function(parent, nameFn, possibleParentFn, attrFn) {
-        for (var i=0; i<parent.childNodes.length; i++) {
-            var node = parent.childNodes[i],
-                name = V.name(node);
-            if (name) {
-                nameFn(name, node);
-            } else if (possibleParentFn && !node.useBaseValue()) {
-                possibleParentFn(node);
-            } else if (node.useAttrValues) {
-                V.nameAttrs(node, attrFn);
+        for (var i=0, done = []; i<parent.childNodes.length; i++) {
+            var node = parent.childNodes[i];
+            if (node.tagName !== 'X-REPEAT') {
+                var name = V.name(node);
+                if (name && done.indexOf(name) < 0) {
+                    done.push(name);
+                    nameFn(name, node);
+                } else if (possibleParentFn && !node.useBaseValue()) {
+                    possibleParentFn(node);
+                } else if (node.useAttrValues) {
+                    V.nameAttrs(node, attrFn);
+                }
             }
         }
         if (parent.useAttrValues) {
@@ -89,7 +92,7 @@ var V = _.xValue = {
     },
     getNameValue: function(parent, value) {
         V.nameNodes(parent, function(name, node) {
-            return value[name] = V.combine(value[name], node.nameValue);
+            value[name] = V.combine(value[name], node.nameValue);
         }, function(possibleParent) {
             V.getNameValue(possibleParent, value);
         }, function(attr) {
@@ -101,7 +104,7 @@ var V = _.xValue = {
         V.nameNodes(parent, function(name, node) {
             var value = V.resolve(values, name);
             if (value !== undefined) {
-                return node.nameValue = value;
+                node.nameValue = value;
             }
         }, function(possibleParent) {
             V.setNameValue(possibleParent, values);
@@ -173,7 +176,8 @@ _.define([Node], {
             var node = this,
                 parent;
             while ((parent = node.parentNode)) {
-                if (V.name(parent)) {
+                if (V.name(parent) ||
+                    (parent.hasAttribute && parent.hasAttribute('x-value-parent'))) {
                     return parent;
                 }
                 node = parent;
