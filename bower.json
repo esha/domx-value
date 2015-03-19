@@ -50,6 +50,6 @@
   ],
   "devDependencies": {
     "qunit": "~1.16.0",
-    "domx-repeat": "~0.2.0"
+    "domx-repeat": "~0.3.1"
   }
 }
