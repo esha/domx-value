@@ -350,8 +350,8 @@ _.define([HTMLInputElement], {
         },
         set: function(value) {
             var input = this;
-            if (input.type === 'checkbox' || input.type === 'radio') {
-                value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(this));
+            if (input.checkable && (input.value !== "" || input.hasAttribute('value'))) {
+                value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(input));
                 var was = input.checked;
                 input.checked = value.indexOf(input.value) >= 0;
                 if (was !== input.checked) {
