@@ -1,4 +1,4 @@
-/*! domx-value - v0.2.11 - 2015-04-14
+/*! domx-value - v0.2.12 - 2015-04-14
 * http://esha.github.io/domx-value/
 * Copyright (c) 2015 ESHA Research; Licensed MIT, GPL */
 
@@ -310,7 +310,9 @@ _.define(X.containers, {
                     for (var a=0; a < el.attributes.length; a++) {
                         var attr = el.attributes[a];
                         if (attr.name === name) {
-                            attr.parentNode = el;
+                            if (!attr.parentNode) {
+                                attr.parentNode = el;
+                            }
                             _list.add(attr);
                             break;
                         }
@@ -361,7 +363,9 @@ _.define([HTMLInputElement], {
         },
         set: function(value) {
             var input = this;
-            if (input.checkable && (input.value !== "" || input.hasAttribute('value'))) {
+            if (input.checkable &&
+                ((input.value !== 'on' && input.value !== '') ||
+                  input.hasAttribute('value'))) {
                 value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(input));
                 var was = input.checked;
                 input.checked = value.indexOf(input.value) >= 0;
