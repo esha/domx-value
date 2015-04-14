@@ -438,3 +438,13 @@ _.define([HTMLLIElement], {
         } 
     }
 }, true);
+
+_.define([HTMLOptionElement], {
+    baseProperty: {
+        get: function() {
+            return this.hasAttribute('value') ?
+                'value' :
+                'textContent';
+        }
+    }
+}, true);
