@@ -299,7 +299,9 @@ _.define(X.containers, {
                     for (var a=0; a < el.attributes.length; a++) {
                         var attr = el.attributes[a];
                         if (attr.name === name) {
-                            attr.parentNode = el;
+                            if (!attr.parentNode) {
+                                attr.parentNode = el;
+                            }
                             _list.add(attr);
                             break;
                         }
