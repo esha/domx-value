@@ -339,12 +339,14 @@ _.define([Text], {
 }, true);
 
 _.define([HTMLInputElement], {
+    checkable: {
+        get: function() {
+            return this.type === 'radio' || this.type === 'checkbox';
+        }
+    },
     xValue:  {
         get: function() {
-            var input = this;
-            return (input.type !== 'radio' && input.type !== 'checkbox') || input.checked ?
-                input.baseValue :
-                null;
+            return !this.checkable || this.checked ? this.baseValue : null;
         },
         set: function(value) {
             var input = this;
@@ -362,8 +364,7 @@ _.define([HTMLInputElement], {
     },
     nameValue: {
         get: function() {
-            var type = this.type;
-            if (type === 'radio' || type === 'checkbox') {
+            if (this.checkable) {
                 var group = this.nameGroup,
                     value;
                 group.each(function(node) {
@@ -376,7 +377,7 @@ _.define([HTMLInputElement], {
             return this.baseValue;
         },
         set: function(value) {
-            if (this.type === 'checkbox' || this.type === 'radio') {
+            if (this.checkable) {
                 value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(this));
                 var changed = false;
                 this.nameGroup.each(function(input) {
