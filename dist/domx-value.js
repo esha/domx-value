@@ -1,4 +1,4 @@
-/*! domx-value - v0.2.10 - 2015-02-27
+/*! domx-value - v0.2.11 - 2015-04-14
 * http://esha.github.io/domx-value/
 * Copyright (c) 2015 ESHA Research; Licensed MIT, GPL */
 
@@ -350,17 +350,19 @@ _.define([Text], {
 }, true);
 
 _.define([HTMLInputElement], {
+    checkable: {
+        get: function() {
+            return this.type === 'radio' || this.type === 'checkbox';
+        }
+    },
     xValue:  {
         get: function() {
-            var input = this;
-            return (input.type !== 'radio' && input.type !== 'checkbox') || input.checked ?
-                input.baseValue :
-                null;
+            return !this.checkable || this.checked ? this.baseValue : null;
         },
         set: function(value) {
             var input = this;
-            if (input.type === 'checkbox' || input.type === 'radio') {
-                value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(this));
+            if (input.checkable && (input.value !== "" || input.hasAttribute('value'))) {
+                value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(input));
                 var was = input.checked;
                 input.checked = value.indexOf(input.value) >= 0;
                 if (was !== input.checked) {
@@ -373,8 +375,7 @@ _.define([HTMLInputElement], {
     },
     nameValue: {
         get: function() {
-            var type = this.type;
-            if (type === 'radio' || type === 'checkbox') {
+            if (this.checkable) {
                 var group = this.nameGroup,
                     value;
                 group.each(function(node) {
@@ -387,7 +388,7 @@ _.define([HTMLInputElement], {
             return this.baseValue;
         },
         set: function(value) {
-            if (this.type === 'checkbox' || this.type === 'radio') {
+            if (this.checkable) {
                 value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(this));
                 var changed = false;
                 this.nameGroup.each(function(input) {
@@ -446,6 +447,16 @@ _.define([HTMLLIElement], {
                 'value' :
                 'textContent';
         } 
+    }
+}, true);
+
+_.define([HTMLOptionElement], {
+    baseProperty: {
+        get: function() {
+            return this.hasAttribute('value') ?
+                'value' :
+                'textContent';
+        }
     }
 }, true);
 
