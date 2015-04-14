@@ -327,8 +327,6 @@
         radio.type = 'radio';
         ok(!check.hasAttribute('value'), 'checkbox should not have a value attribute');
         ok(!radio.hasAttribute('value'), 'radio should not have a value attribute');
-        strictEqual(check.value, "", 'checkbox should not have a value either');
-        strictEqual(radio.value, "", 'radio should not have a value either');
         check.xValue = 'checky';
         radio.xValue = 'rad';
         check.xValue = 'nope';
