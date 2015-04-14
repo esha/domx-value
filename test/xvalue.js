@@ -308,4 +308,57 @@
         equal(el.useBaseValue(), false, "single named child");
     });
 
+    test('input.checkable', function() {
+        var el = D.createElement('input');
+        ok('checkable' in el, 'has checkable properties');
+        equal(false, el.checkable, 'text type is not checkable');
+        el.type = 'radio';
+        equal(true, el.checkable, 'radio is checkable');
+        el.type = 'number';
+        equal(false, el.checkable, 'number is not checkable');
+        el.type = 'checkbox';
+        equal(true, el.checkable, 'checkbox is checkable');
+    });
+
+    test('use xValue to populate checkable value', function() {
+        var check = D.createElement('input'),
+            radio = D.createElement('input');
+        check.type = 'checkbox';
+        radio.type = 'radio';
+        ok(!check.hasAttribute('value'), 'checkbox should not have a value attribute');
+        ok(!radio.hasAttribute('value'), 'radio should not have a value attribute');
+        strictEqual(check.value, "", 'checkbox should not have a value either');
+        strictEqual(radio.value, "", 'radio should not have a value either');
+        check.xValue = 'checky';
+        radio.xValue = 'rad';
+        check.xValue = 'nope';
+        radio.xValue = 'nope';
+        equal(check.value, 'checky', 'checkbox should have first set value');
+        equal(radio.value, 'rad', 'radio should have first set value');
+        ok(!check.checked, 'checkbox should not be checked');
+        ok(!radio.checked, 'radio should not be checked');
+        equal(check.xValue, null, 'checkbox should have null value');
+        equal(radio.xValue, null, 'radio should have null value');
+        check.xValue = ['checky'];
+        radio.xValue = 'rad';
+        equal(check.xValue, 'checky', 'checkbox xValue when checked');
+        equal(radio.xValue, 'rad', 'radio xValue when checked');
+    });
+
+    test('<option> baseProperty savviness', function() {
+        var value = D.createElement('option'),
+            text = D.createElement('option');
+        value.setAttribute('value', 'value');
+        value.textContent = 'text';
+        text.textContent = 'text';
+
+        equal(value.xValue, value.value, 'should get value attr/prop, not text');
+        equal(text.xValue, text.textContent, 'should get text, not value attr/prop');
+
+        value.xValue = 'new value';
+        text.xValue = 'new text';
+        equal(value.value, 'new value', 'xValue should have set value property');
+        equal(text.textContent, 'new text', 'xValue should have set text property');
+    });
+
 }(document));
