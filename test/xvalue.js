@@ -322,15 +322,23 @@
 
     test('use xValue/nameValue to populate checkable value', function() {
         var check = D.createElement('input'),
+            parent = D.createElement('div'),
             radio = D.createElement('input');
         check.type = 'checkbox';
         radio.type = 'radio';
+        radio.setAttribute('name', 'name');
+        parent.appendChild(check);
+        parent.appendChild(radio);
+
         ok(!check.hasAttribute('value'), 'checkbox should not have a value attribute');
         ok(!radio.hasAttribute('value'), 'radio should not have a value attribute');
+        ok(check.value === '' || check.value === 'on', 'checkbox should have default value');
+        ok(radio.value === '' || radio.value === 'on', 'radio should have default value');
+
         check.xValue = 'checky';
-        radio.nameValue = 'rad';
+        parent.xValue = { name: 'rad' };
         check.xValue = 'nope';
-        radio.nameValue = 'nope';
+        parent.xValue = { name: 'nope'};
         equal(check.value, 'checky', 'checkbox should have first set value');
         equal(radio.value, 'rad', 'radio should have first set value');
         ok(!check.checked, 'checkbox should not be checked');
@@ -338,7 +346,7 @@
         equal(check.xValue, null, 'checkbox should have null value');
         equal(radio.nameValue, null, 'radio should have null value');
         check.xValue = ['checky'];
-        radio.nameValue = 'rad';
+        parent.xValue = { name: 'rad'};
         equal(check.xValue, 'checky', 'checkbox xValue when checked');
         equal(radio.nameValue, 'rad', 'radio xValue when checked');
     });
