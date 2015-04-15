@@ -320,7 +320,7 @@
         equal(true, el.checkable, 'checkbox is checkable');
     });
 
-    test('use xValue to populate checkable value', function() {
+    test('use xValue/nameValue to populate checkable value', function() {
         var check = D.createElement('input'),
             radio = D.createElement('input');
         check.type = 'checkbox';
@@ -328,19 +328,19 @@
         ok(!check.hasAttribute('value'), 'checkbox should not have a value attribute');
         ok(!radio.hasAttribute('value'), 'radio should not have a value attribute');
         check.xValue = 'checky';
-        radio.xValue = 'rad';
+        radio.nameValue = 'rad';
         check.xValue = 'nope';
-        radio.xValue = 'nope';
+        radio.nameValue = 'nope';
         equal(check.value, 'checky', 'checkbox should have first set value');
         equal(radio.value, 'rad', 'radio should have first set value');
         ok(!check.checked, 'checkbox should not be checked');
         ok(!radio.checked, 'radio should not be checked');
         equal(check.xValue, null, 'checkbox should have null value');
-        equal(radio.xValue, null, 'radio should have null value');
+        equal(radio.nameValue, null, 'radio should have null value');
         check.xValue = ['checky'];
-        radio.xValue = 'rad';
+        radio.nameValue = 'rad';
         equal(check.xValue, 'checky', 'checkbox xValue when checked');
-        equal(radio.xValue, 'rad', 'radio xValue when checked');
+        equal(radio.nameValue, 'rad', 'radio xValue when checked');
     });
 
     test('<option> baseProperty savviness', function() {

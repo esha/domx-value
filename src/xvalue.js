@@ -351,25 +351,13 @@ _.define([HTMLInputElement], {
             return !this.checkable || this.checked ? this.baseValue : null;
         },
         set: function(value) {
-            var input = this;
-            if (input.checkable &&
-                ((input.value !== 'on' && input.value !== '') ||
-                  input.hasAttribute('value'))) {
-                value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(input));
-                var was = input.checked;
-                input.checked = value.indexOf(input.value) >= 0;
-                if (was !== input.checked) {
-                    V.changeEvent(input);
-                }
-            } else {
-                this.baseValue = value;
-            }
+            this.nameValue = value;
         }
     },
     nameValue: {
         get: function() {
             if (this.checkable) {
-                var group = this.nameGroup,
+                var group = this.nameGroup || new X.List(this),
                     value;
                 group.each(function(node) {
                     value = V.combine(value, node.xValue, true);
@@ -381,21 +369,25 @@ _.define([HTMLInputElement], {
             return this.baseValue;
         },
         set: function(value) {
-            if (this.checkable) {
-                value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(this));
-                var changed = false;
-                this.nameGroup.each(function(input) {
-                    var was = input.checked;
-                    input.checked = value.indexOf(input.value) >= 0;
-                    if (was !== input.checked) {
+            var input = this;
+            if (input.checkable &&
+                ((input.value !== 'on' && input.value !== '') ||
+                  input.hasAttribute('value'))) {
+                value = (Array.isArray(value) ? value : [value]).map(V.stringifyFor(input));
+                var changed = false,
+                    group = input.nameGroup || new X.List(input);
+                group.each(function(el) {
+                    var was = el.checked;
+                    el.checked = value.indexOf(el.value) >= 0;
+                    if (was !== el.checked) {
                         changed = true;
                     }
                 });
                 if (changed) {
-                    V.changeEvent(this);
+                    V.changeEvent(input);
                 }
             } else {
-                this.baseValue = value;
+                input.baseValue = value;
             }
         }
     }
